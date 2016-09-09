@@ -169,7 +169,7 @@ Use ``Customer.sources`` and ``Customer.subscriptions`` to access them.
         try:
             self._api_delete()
         except InvalidRequestError as exc:
-            if str(exc).startswith("No such customer:"):
+            if str(exc).find("No such customer:") >= 0:
                 # The exception was thrown because the stripe customer was already
                 # deleted on the stripe side, ignore the exception
                 pass
@@ -536,7 +536,7 @@ class Card(StripeCard):
         try:
             self._api_delete()
         except InvalidRequestError as exc:
-            if str(exc).startswith("No such customer:"):
+            if str(exc).find("No such customer:") >=0 :
                 # The exception was thrown because the stripe customer was already
                 # deleted on the stripe side, ignore the exception
                 pass
